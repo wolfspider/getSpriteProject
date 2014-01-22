@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="app_name">getSprite</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_title">Profile Results</string>
+    <string name="SpriteTitle">Sprites:</string>
+    <string name="AnimateTitle">Animate</string>
+    <string name="CanvasTitle">Canvas</string>
+    <string name="OpenGLTitle">OpenGL ES</string>
+    <string name="UseVertsTitle">Use Basic Vert Quads</string>
+    <string name="UseDrawTextureTitle">Use Draw Texture Extension</string>
+    <string name="UseVBOTitle">Use VBO Extension</string>
+    <string name="RunTestTitle">Run Test</string>
+    <string-array name="sports_array">
+        <item>Shuttle Badminton</item>
+        <item>Tennis</item>
+        <item>FootBall</item>
+        <item>Basket Ball</item>
+        <item>Table Tennis</item>
+        <item>Chess</item>
+        <item>Hockey</item>
+    </string-array>
+
+</resources>
