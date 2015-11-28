@@ -79,7 +79,7 @@ public class zoneGrid {
             mTexCoordBuffer = mFixedTexCoordBuffer;
             mColorBuffer = mFixedColorBuffer;
             mCoordinateSize = FIXED_SIZE;
-            mCoordinateType = GL10.GL_FIXED;
+            mCoordinateType = GLES20.GL_FIXED;
 
         } else {
             mFloatVertexBuffer = ByteBuffer.allocateDirect(FLOAT_SIZE * size * 3)
@@ -94,7 +94,7 @@ public class zoneGrid {
             mTexCoordBuffer = mFloatTexCoordBuffer;
             mColorBuffer = mFloatColorBuffer;
             mCoordinateSize = FLOAT_SIZE;
-            mCoordinateType = GL10.GL_FLOAT;
+            mCoordinateType = GLES20.GL_FLOAT;
         }
 
 
@@ -156,7 +156,7 @@ public class zoneGrid {
         final int texIndex = index * 2;
         final int colorIndex = index * 4;
 
-        if (mCoordinateType == GL10.GL_FLOAT) {
+        if (mCoordinateType == GLES20.GL_FLOAT) {
             mFloatVertexBuffer.put(posIndex, x);
             mFloatVertexBuffer.put(posIndex + 1, y);
             mFloatVertexBuffer.put(posIndex + 2, z);
@@ -190,6 +190,7 @@ public class zoneGrid {
     public static void beginDrawing(GL10 gl, boolean useTexture, boolean useColor) {
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 
+
         if (useTexture) {
             gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
             gl.glEnable(GL10.GL_TEXTURE_2D);
@@ -209,6 +210,7 @@ public class zoneGrid {
     public void draw(GL10 gl, boolean useTexture, boolean useColor) {
         if (!mUseHardwareBuffers) {
             gl.glVertexPointer(3, mCoordinateType, 0, mVertexBuffer);
+
 
             if (useTexture) {
                 gl.glTexCoordPointer(2, mCoordinateType, 0, mTexCoordBuffer);
@@ -309,10 +311,12 @@ public class zoneGrid {
                 int[] buffer = new int[1];
 
                 // Allocate and fill the vertex buffer.
-                GLES20.glGenBuffers(1, buffer, 0);
+                //GLES20.glGenBuffers(1, buffer, 0);
                 gl11.glGenBuffers(1, buffer, 0);
                 mVertBufferIndex = buffer[0];
                 gl11.glBindBuffer(GL11.GL_ARRAY_BUFFER, mVertBufferIndex);
+                //GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, mVertBufferIndex);
+
                 final int vertexSize = mVertexBuffer.capacity() * mCoordinateSize;
                 gl11.glBufferData(GL11.GL_ARRAY_BUFFER, vertexSize,
                         mVertexBuffer, GL11.GL_STATIC_DRAW);

@@ -264,7 +264,7 @@ public class spriteRender implements spriteSurface.Renderer{
             ((GL11) gl).glTexParameteriv(GL10.GL_TEXTURE_2D,
                     GL11Ext.GL_TEXTURE_CROP_RECT_OES, mCropWorkspace, 0);*/
 
-            GLES20.glTexParameteriv(GLES20.GL_TEXTURE_2D,GL11Ext.GL_TEXTURE_CROP_RECT_OES, mCropWorkspace, 0);
+           // GLES20.glTexParameteriv(GLES20.GL_TEXTURE_2D,GL11Ext.GL_TEXTURE_CROP_RECT_OES, mCropWorkspace, 0);
 
 
             int error = GLES20.glGetError();
