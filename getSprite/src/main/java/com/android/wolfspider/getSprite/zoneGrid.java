@@ -223,7 +223,9 @@ public class zoneGrid {
         } else {
             GL11 gl11 = (GL11)gl;
             // draw using hardware buffers
-            gl11.glBindBuffer(GL11.GL_ARRAY_BUFFER, mVertBufferIndex);
+            //gl11.glBindBuffer(GL11.GL_ARRAY_BUFFER, mVertBufferIndex);
+            GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, mVertBufferIndex);
+
             gl11.glVertexPointer(3, mCoordinateType, 0, 0);
 
             if (useTexture) {

@@ -124,21 +124,21 @@ public class spriteRender implements spriteSurface.Renderer{
          * Some one-time OpenGL initialization can be made here probably based
          * on features of this particular context
          */
-        gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
+        //GLES20.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
 
-        gl.glClearColor(0.5f, 0.5f, 0.5f, 1);
-        gl.glShadeModel(GL10.GL_FLAT);
-        gl.glDisable(GL10.GL_DEPTH_TEST);
-        gl.glEnable(GL10.GL_TEXTURE_2D);
+        GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1);
+        //gl.glShadeModel(GL10.GL_FLAT);
+        GLES20.glDisable(GLES20.GL_DEPTH_TEST);
+        GLES20.glEnable(GLES20.GL_TEXTURE_2D);
         /*
          * By default, OpenGL enables features that improve quality but reduce
          * performance. One might want to tweak that especially on software
          * renderer.
          */
-        gl.glDisable(GL10.GL_DITHER);
-        gl.glDisable(GL10.GL_LIGHTING);
+        GLES20.glDisable(GLES20.GL_DITHER);
+        //GLES20.glDisable(GL10.GL_LIGHTING);
 
-        gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
         if (mSprites != null) {
 
@@ -174,7 +174,7 @@ public class spriteRender implements spriteSurface.Renderer{
                     if (!currentGrid.usingHardwareBuffers()) {
                         currentGrid.generateHardwareBuffers(gl);
                     }
-                    //mSprites[x].getGrid().generateHardwareBuffers(gl);
+                    mSprites[x].getGrid().generateHardwareBuffers(gl);
                 }
             }
         }
@@ -212,7 +212,8 @@ public class spriteRender implements spriteSurface.Renderer{
     protected int loadBitmap(Context context, GL10 gl, int resourceId) {
         int textureName = -1;
         if (context != null && gl != null) {
-            gl.glGenTextures(1, mTextureNameWorkspace, 0);
+
+            GLES20.glGenTextures(1, mTextureNameWorkspace, 0);
 
             textureName = mTextureNameWorkspace[0];
             //gl.glBindTexture(GL10.GL_TEXTURE_2D, textureName);
@@ -259,12 +260,15 @@ public class spriteRender implements spriteSurface.Renderer{
 
             bitmap.recycle();
 
+            /*
             ((GL11) gl).glTexParameteriv(GL10.GL_TEXTURE_2D,
-                    GL11Ext.GL_TEXTURE_CROP_RECT_OES, mCropWorkspace, 0);
+                    GL11Ext.GL_TEXTURE_CROP_RECT_OES, mCropWorkspace, 0);*/
+
+            GLES20.glTexParameteriv(GLES20.GL_TEXTURE_2D,GL11Ext.GL_TEXTURE_CROP_RECT_OES, mCropWorkspace, 0);
 
 
-            int error = gl.glGetError();
-            if (error != GL10.GL_NO_ERROR) {
+            int error = GLES20.glGetError();
+            if (error != GLES20.GL_NO_ERROR) {
                 Log.e("spriteRender", "Texture Load GLError: " + error);
             }
 

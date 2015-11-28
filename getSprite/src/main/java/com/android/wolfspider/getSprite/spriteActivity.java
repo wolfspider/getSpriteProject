@@ -42,7 +42,7 @@ public class spriteActivity extends Activity{
         final int robotCount = callingIntent.getIntExtra("spriteCount", 10);
         final boolean animate = callingIntent.getBooleanExtra("animate", true);
         final boolean useVerts =
-                callingIntent.getBooleanExtra("useVerts", false);
+                callingIntent.getBooleanExtra("useVerts", true);
         final boolean useHardwareBuffers =
                 callingIntent.getBooleanExtra("useHardwareBuffers", true);
 
