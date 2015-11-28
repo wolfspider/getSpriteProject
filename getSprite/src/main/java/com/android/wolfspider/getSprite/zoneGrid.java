@@ -236,8 +236,8 @@ public class zoneGrid {
             }
 
             if (useColor) {
-                gl11.glBindBuffer(GL11.GL_ARRAY_BUFFER, mColorBufferIndex);
-                gl11.glColorPointer(4, mCoordinateType, 0, 0);
+                //gl11.glBindBuffer(GL11.GL_ARRAY_BUFFER, mColorBufferIndex);
+                //gl11.glColorPointer(4, mCoordinateType, 0, 0);
             }
 
             gl11.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER, mIndexBufferIndex);
